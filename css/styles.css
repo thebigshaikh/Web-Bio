@@ -2,6 +2,7 @@ body{
     background-color: #FFF3E4;
     color: #6B4F4F;
     font: 1em sans-serif;
+    
 }
 
 hr{
@@ -14,4 +15,21 @@ hr{
 
 h1,h2,h3{
     color: #483434;
+}
+
+.my_pic{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-top: 50em;
+    height: 250px;
+    width: 250px;
+    border-radius: 55%;
+}
+
+.info{
+    margin: auto;
+    width: 50%;
+    /* border: 5px solid #FFFF00; */
+    padding: 10px;
 }
