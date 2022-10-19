@@ -178,7 +178,7 @@ class Shell {
     $('#terminal').html(
       `<p class="hidden">
           <span class="prompt">
-            <strong class="home">abdul@notebook-HP</strong>
+            <strong class="home">iambasil@ubuntu</strong>
             <strong class="white">:</strong>
             <strong class="dir">~${dir}</strong>
             <strong class="white">$</strong>
