@@ -1,76 +1,193 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bio</title>
-    <link rel="stylesheet" href="/css/styles.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>basil's CLI - Terminal</title>
+  <link rel="stylesheet/less" type="text/css" href="styles/main.less" />
+  <link rel="stylesheet/less" type="text/css" href="styles/flip.less" />
+  <link rel="stylesheet/less" type="text/css" href="styles/prettyUI.less" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu" />
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/1.4.3/js/jquery.terminal.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.14.0/devicon.min.css"> 
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" integrity="sha384-3B6NwesSXE7YJlcLI9RpRqGf2p/EgVH8BgoKTaUrmKNDkHPStTQ3EyoYjCGXaOTS" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles/gallery.css">
+  <script type="text/javascript" src="js/shell.js"></script>
+  <script type="text/javascript" src="js/cli.js"></script>
+  <script src="js/jquery.flip.js"></script>
+  <script>
+    $(function() {
+      // console.log("Hi");
+        $("#card").flip({
+            trigger: 'manual',
+            speed: 2000,
+        });
+    });
+
+    $(window).on('load',function() {
+      setTimeout(function() {
+        $(".loader").fadeOut(500,function() {
+            // fadeOut complete. Remove the loading div
+            $( ".loader" ).remove(); //makes page more lightweight 
+        });
+      }, 500);
+    });
+  </script>
+
+  <!-- Meta tags start-->
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
+  <link href="favicon.ico" rel="shortcut icon">
+  <meta content="https://avatars.githubusercontent.com/u/17446181" property="og:image">
+  <meta content="Basil Sajid Shaikh" property="og:title">
+  <!-- <meta content="basil.co.in" property="og:site_name"> -->
+  <!-- <meta content="http://basil.co.in/" property="og:url"> -->
+  <meta content="Basil's Ubuntu Website with CLI and GUI" property="og:description" >
+  <meta content="Basil's Ubuntu Website with CLI and GUI">
+  <meta content="Basil Shaikh"name="author">
+  <meta content="Basil Shaikh" name="copyright">
+  <!-- Meta tags end -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135127723-3"></script>
+  <script>
+    if (location.hostname != "localhost") {
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-135127723-3");
+    } else {
+      console.log("dev mode detected, don't track view");
+    }
+  </script>
+  <!-- Google Analytics end -->
 
 </head>
+
 <body>
-    <table>
-        <tr>
-            <td>
-                <img  src="images/IMG_20211217_085450_203.jpeg" alt="my pic" width="250" height="250" style="border-radius: 55%">
+  <div class="loader">
+    <img src="data/ubuntu.svg" alt="Ubuntu" class="ubuntu-logo">
+    <img src="data/throbber.svg" alt="" class="ubuntu-loading">
+  </div>
 
-            </td>
+<div class="flip-box" id="card">
 
-            <td style="padding: 0 25px;">
-                <h1> Basil Shaikh </h1>
-                <!-- <br> -->
-                <i> Computer Science Grad Student at </i> 
-                <a href="https://www.sdsu.edu/"> <i> <b> San Diego State University, California </b>  </i> </a>
-                <p>I have worked as Data Scientist for 3 Years and now I am learning Web-Development!</p>
-            </td>
-        </tr>
+  <div class="terminal-window front">
+    <header>
+      <div class="header-title">iambasil@ubuntu - Terminal</div>
+      <div class="button yellow">
+        <i class="fa-solid fa-minus white"></i>
+      </div>
+      <div class="button green">
+        <i class="fa-regular fa-square white"></i>
+      </div>
+      <div class="button red">
+        <i class="fa-solid fa-circle-xmark insta"></i>
+      </div>
+    </header>
+    <div id="terminal">
+      <p><strong class="green" style="line-height: 1.7;">
+        \[._.]/</strong> - Welcome! You're in basil's command line interface! <br> <strong class="green" style="line-height: 1.7;">
+          \[._.]/</strong> -  Type `help` to get started, or click <i class="fa-solid fa-repeat"></i> on the bottom right for graphical interface.
+      </p>
+      <div class="loginInfo"></div>
+      <p class="hidden">
+        <span class="prompt">
+          <strong class="home">iambasil@ubuntu</strong>
+          <strong class="white">:</strong>
+          <strong class="dir">~</strong>
+          <strong class="white">$</strong>
+        </span>
+        <span contenteditable="true" spellcheck="false" autocomplete="off" autocorrect="off" class="input"> </span>
+      </p>
+    </div>
+  </div>
+
+  <div class="terminal-window back">
+    <header>
+      <div class="header-title">basil's GUI</div>
+      <div class="button yellow">
+        <i class="fa-solid fa-minus white"></i>
+      </div>
+      <div class="button green">
+        <i class="fa-regular fa-square white"></i>
+      </div>
+      <div class="button red">
+        <i class="fa-solid fa-circle-xmark insta"></i>
+      </div>
+    </header>
 
 
-    </table>
+
+    <nav class=" " id="leftcol">
+      <div class="leftcolTab active">
+        <i class="fa-solid fa-user icon"></i>
+        <div class="name">About</div>
+      </div>
+      <div class="leftcolTab">
+        <i class="fa-solid fa-graduation-cap icon"></i>
+        <div class="name">Education</div>
+      </div>
+      <div class="leftcolTab">
+        <i class="fa-solid fa-laptop-code icon"></i>
+        <div class="name">Skills</div>
+      </div>	
+      <div class="leftcolTab">
+        <i class="fa-solid fa-building icon"></i>
+        <div class="name">Experience</div>
+      </div>
+      <div class="leftcolTab">
+        <i class="fa-solid fa-diagram-project icon"></i>
+        <div class="name">Projects</div>
+      </div>	
+      <div class="leftcolTab">
+        <i class="fa-solid fa-file-pdf icon"></i>
+        <div class="name">Resume</div>
+      </div>
+      <div class="leftcolTab">
+        <i class="fa-solid fa-address-card icon"></i>
+        <div class="name">Contact</div>
+      </div>
+      <div class="leftcolTab">
+        <i class="fa-solid fa-image icon"></i>
+        <div class="name">Gallery</div>
+      </div>
+    </nav>
     
-    <hr> 
-    <h3>
-        Education
-    </h3>
-    <ul>
-        <li>Master of Computer Science -  SDSU</li>
-        <li>Bachelor of Engineering -  University of Pune</li>
+    <div class="" id="rightcol">
+      <span class="nav-opener" onclick="openSlider()">&#9776;</span>
+      <div class="content">
 
-    </ul>
-    <hr>
-    
-    <h3> Work Experience </h3>
-    <table border="0">
-    <tr>
-    <td style="padding: 0px 30px;">2017 - 2021</td> <td style="padding: 0px 30px;">Data Scientist at TIBCO Software</td>
-    </tr>
-    <tr> 
-        <td style="padding: 0px 30px;">2021 - now</td> <td style="padding: 0px 30px;">TA at SDSU </td>
+      </div>
+    </div>
+  </div>
+</div>
 
-    </tr>
+<div class="fabFlip">
+  <i class="fa-solid fa-repeat flip-img" onclick="flipWindow()"></i>
+</div>
 
-    </table>
-<hr>
-    <h3>Skills</h3>
-    <table>
-        <tr>
-            <td style="padding: 0 20PX;">Python</td> <td> &#11088; &#11088; &#11088; &#11088;</td>
-            <td style="padding: 0px 20px;"> Java </td> <td> &#11088; &#11088; &#11088;</td>
-        </tr>
-        <TR>
-            <td style="padding: 0 20PX;"> SQL </td><td>&#11088; &#11088; &#11088; &#11088; </td>
-            <td style="padding: 0px 20px;"> R </td> <td> &#11088; &#11088; &#11088; </td>
+<div class="footer">
+  <p> Made with ❤️ & ☕</p>
+  <p> Inspired by <strong>Ubuntu</strong> 
+    <i class="devicon-linux-plain"></i>
+  </p>
+  <!-- <p >
+    For 
+    <span class="flip-text">GUI</span> 
+    <strong class="flip-btn" onclick="flipWindow()">click here</strong>
+  </p> -->
+  <p class="copyright">
+    <strong>© Basil Sajid Shaikh 2022</strong>
+  </p>
+</div>
 
-        </TR>
-        <tr>
-            <td style="padding: 0px 20px;"> Data Engineering </td> <td> &#11088; &#11088; &#11088; </td>
-            <td style="padding: 0px 20px;"> Machine Learning </td> <td> &#11088; &#11088; &#11088; &#11088;</td>
+<script type="text/javascript" src="js/loginInfo.js"></script>
+<script type="text/javascript" src="js/prettyUI.js"></script>
+<script type="text/javascript" src="js/gallery.js"></script>
 
-        </tr>
-    </table>
-
-    <hr>
-    <a href="hobbies.html"> My Hobbies </a> &nbsp;
-    <a href="contact_me.html"> Contact me! </a>
 </body>
-</html>
