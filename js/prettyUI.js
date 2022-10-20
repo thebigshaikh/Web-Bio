@@ -80,4 +80,10 @@ $('.leftcolTab').click(function() {
     });
   }
 
+  if(name === "Research"){
+    $.get("pages/research.html", function(data) {
+      $('.content')[0].innerHTML = data;
+    });
+  }
+
 });

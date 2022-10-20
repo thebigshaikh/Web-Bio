@@ -10,9 +10,11 @@ const errors = {
 };
 
 const struct = {
-  home: ['about', 'resume', 'contact', 'projects'],
+  home: ['about', 'resume', 'contact', 'projects', 'research',],
   skills: ['proficient', 'familiar'],
 };
+
+// console.log(struct);
 
 const commands = {};
 let systemData = {};
@@ -83,6 +85,7 @@ commands.prime = () => {
 // View contents of specified directory.
 commands.ls = (directory) => {
   // console.log(systemData);
+  console.log(getDirectory());
   if (directory === '..' || directory === '~') {
     return systemData['home'];
   }
@@ -182,6 +185,8 @@ $(() => {
   pages.push($.get('pages/home.html'));
   pages.push($.get('pages/skills.html'));
   pages.push($.get('pages/projects.html'));
+  pages.push($.get('pages/research.html'));
+
   $.when
     .apply($, pages)
     .done(
@@ -195,6 +200,7 @@ $(() => {
         homeData,
         skillsData,
         projectsData,
+        researchData,
       ) => {
         systemData['about'] = aboutData[0];
         systemData['contact'] = contactData[0];
@@ -205,6 +211,8 @@ $(() => {
         systemData['home'] = homeData[0];
         systemData['skills'] = skillsData[0];
         systemData['projects'] = projectsData[0];
+        systemData['research'] = researchData[0];
+
       },
     );
 
